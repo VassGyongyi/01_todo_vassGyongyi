@@ -1,20 +1,24 @@
+
+import MegjSor from "./MegjSor.js";
 class LMegjelenit {
-    constructor(LISTA, szuloElem) {
-      this.LISTA = LISTA;
+    #lista=[]
+    constructor(lista, szuloElem) {
+      this.#lista = lista;
       this.szuloElem = szuloElem;
-      let txt = this.osszeallit(LISTA);
-      this.szuloElem.html(txt);
+      szuloElem.append(`<table class=table>`)
+    
+      this.tablaElem = szuloElem.children("table");
+      //this.szuloElem.html(txt);
+      this.osszeallit();
     }
     osszeallit() {
-        let txt = "<ul>";
-        for (let index = 0; index < this.LISTA.length; index++) {
-          const element = this.LISTA[index];
-          txt += `<li>${element}</li>`;
-        }
-        txt += "<ul>";
-        return txt;
+        let txt = "";
+        for (let index = 0; index < this.#lista.length; index++) {
+          //const element = this.#lista[index];
+         new MegjSor(this.#lista[index],this.tablaElem)  
       }
       
-      
+    }
 }
   export default LMegjelenit;
+
